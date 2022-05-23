@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
-import  Validator  from './validator';
+import { useState } from 'react';
+import  {Vbirth}  from './validator';
 
-function birthDay() {
+function BirthDay(props) {
     const [birth,setbirth]=useState("")
     return (
-        <div>
+        <div className="birth">
+            <span>{props.nam}</span>
             <input type="date" value={birth} onChange={e =>setbirth(e.target.value)}></input>
             <label >
            {
-              birth && !Validator(birth) ? 'incorrect' : ''
+              birth && !Vbirth(birth) ? 'birth incorrect' : ''
            }
          </label>
         </div>
     );
 }
 
-export default birthDay;
+export default BirthDay;

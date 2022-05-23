@@ -1,4 +1,4 @@
- export default function Validator(codM)
+ export function VnationalCode(codM)
 {
     if (isNaN(codM) || codM.length == 10) {
         if (codM == '1111111111' ||
@@ -34,4 +34,29 @@
         return false;
     }
 }
+
+export  function Vsheba(sheba){
+    var shebaReg = /^(?:IR)(?=.{24}$)[0-9]*$/;
+
+    if (shebaReg.test(sheba)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+export  function Vname(name){}
+
+export  function Vbirth(birth){
+    const birthReg=  /^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$/;
+    if (birthReg.test(birth)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+
 

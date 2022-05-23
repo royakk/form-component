@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import  { useState } from "react";
+import {Vsheba} from './validator';
 
-function sheba(props) {
+function Sheba(props) {
     const[sheba,setsheba]= useState("")
     return (
-        <div>
-           <inpu type="text" value={sheba} onChange={e =>setsheba(e.target.value) } required  ></inpu> 
+        <div className="sheba">
+            <span>{props.nam}</span>
+           <input type="text" value={sheba} onChange={e =>setsheba(e.target.value) } required  ></input> 
           <label >
            {
-              sheba && !Validator(sheba) ? 'name incorrect' : ''
+              sheba && !Vsheba(sheba) ? 'sheba incorrect' : ''
            }
          </label>  
         </div>
     );
 }
 
-export default sheba;
+export default Sheba;
