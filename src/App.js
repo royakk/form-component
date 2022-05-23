@@ -5,7 +5,6 @@ import Personal from './personal';
 function App() {
   return (
     <div className="App">
-      <Nationalcode2 />
       <Personal />
     </div>
   );

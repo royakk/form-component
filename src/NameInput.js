@@ -5,7 +5,7 @@ export default function NameInput (nam){
     return(
         <div>
           <span>{nam}</span>
-          <inpu type="text" value={name} placeholder="enter name"  ></inpu> 
+          <inpu type="text" value={name} onChange={e =>setname(e.target.value) }placeholder={nam} required  ></inpu> 
           <label >
            {
               name && !Validator(name) ? 'name incorrect' : ''
