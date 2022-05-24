@@ -1,19 +1,24 @@
-import { useState } from 'react';
-import  {Vbirth}  from './validator';
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import AdapterJalali from '@date-io/date-fns-jalali';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-function BirthDay(props) {
-    const [birth,setbirth]=useState("")
-    return (
-        <div className="birth">
-            <span>{props.nam}</span>
-            <input type="date" value={birth} onChange={e =>setbirth(e.target.value)}></input>
-            <label >
-           {
-              birth && !Vbirth(birth) ? 'birth incorrect' : ''
-           }
-         </label>
-        </div>
-    );
+export default function BirthDay(props) {
+  const [value, setValue] = React.useState(new Date());
+
+  return (
+    <div className='date'>
+      <span>{props.nam}</span>
+    <LocalizationProvider dateAdapter={AdapterJalali}>
+      <DatePicker
+        mask="____/__/__"
+        value={value}
+        onChange={(newValue) => setValue(newValue)}
+        renderInput={(params) => <TextField {...params} />}
+        
+      />
+    </LocalizationProvider>
+    </div>
+  );
 }
-
-export default BirthDay;

@@ -1,28 +1,38 @@
 body {
-    background-color: blanchedalmond ;
+    background-color: blanchedalmond;
     color: rgb(0, 0, 0);
     padding: 40px;
     font-family: Arial;
     /* text-align: center; */
-    
-  }
-  
-label{
-    color: red;
-    
 }
- input{
+
+label {
+    color: red;
+}
+
+input {
     padding: 15px;
     margin-bottom: 10px;
     width: 200px;
     margin-right: 10px;
     display: grid;
- }
- div{
+}
+
+div {
     display: grid;
- }
- .App{
-     border: 1px solid;
-     padding: 10px;
-     background-color: antiquewhite;
- }
+}
+
+.App {
+    border: 1px solid;
+    padding: 10px;
+    background-color: antiquewhite;
+    width: 15%;
+}
+
+.date {
+    max-width: 230px;
+}
+
+.btn {
+    width: 1000px;
+}
