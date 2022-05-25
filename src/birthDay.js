@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 export default function BirthDay(props) {
   const [value, setValue] = React.useState(new Date());
-
+ const  setValue1=props.setValue();
   return (
     <div className='date'>
       <span>{props.nam}</span>

@@ -3,6 +3,7 @@ import {Vsheba} from './validator';
 
 function Sheba(props) {
     const[input,setsheba]= useState("")
+   const setsheba1= props.setsheba;
     return (
         <div className="sheba">
             <span>{props.nam}</span>

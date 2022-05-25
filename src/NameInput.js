@@ -4,7 +4,7 @@ import {Vname} from "./validator";
 export default function NameInput (props){
     const [name,setname]=useState("");
 
-    
+    props.setname()
     return(
         <div className="name">
           <span>{props.nam}</span>
