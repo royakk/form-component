@@ -1,18 +1,20 @@
 
-import { useState,} from "react";
+// import { useState,} from "react";
 import React from 'react';
 import axios from 'axios'
 function Postform(props) {
     const url=""
-    const [value,setvalue]=useState({
-        name:props.name,
-        family:props.family,
-        fname:props.fname,
-        date:props.date,
-        codm:props.codM,
-        shebacode:props.shebacode
-    }   
-   )
+    const value={...props.sendInfo}
+    // const [value,setvalue]=useState({
+        // name:props.setname1,
+        // family:props.setname2,
+        // fname:props.setname3,
+        // date:props.setValue1,
+        // codm:props.setcodM1,
+        // shebacode:props.setsheba1
+        
+//     }   
+//    )
     return (
         <div className="btn">
            <input type="submit" value="Submit" onClick={handleSubmit} /> 
@@ -20,7 +22,7 @@ function Postform(props) {
     );
 
 }
-const handleSubmit =(event)=>{
+function handleSubmit (event){
     event.preventDefault();
     axios.post(url,value)
     .then(res=>{console.log(res)})
