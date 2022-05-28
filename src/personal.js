@@ -2,8 +2,11 @@ import BirthDay from './birthDay';
 import NameInput from './NameInput';
 import Nationalcode2 from './nationalcode2';
 import Sheba from './sheba';
-import Submit from './api/submit';
-import { useState } from 'react';
+// import Submit from './api/submit';
+import { createRef, useState } from 'react';
+import React, { useRef } from "react";
+
+// const infocontex = React.createContext();
 
 function Personal (props){
 const[parentstate,setparentstate]=useState({
@@ -20,21 +23,44 @@ const[parentstate,setparentstate]=useState({
         date:"",
         codm:"",
         shebacode:""
-    })
+    });
+    const myContainer = createRef();
+
     function handleCallback  (inputname) {
-        const newinput= [...parentstate]
-        newinput.name=inputname 
-        setparentstate({newinput})
+        parentstate.name = inputname;
+        setparentstate(parentstate);
+        myContainer.current.innerHTML = inputname;
+        console.log(myContainer);
+        
+        console.log(parentstate);
+    }
+    function handleCallbackFamily (inputfamily){
+        parentstate.family = inputfamily;
+        setparentstate(parentstate);
+        
+        console.log(parentstate);
+    }
+    function handleCallbackFname (inputfname){
+        parentstate.fname = inputfname;
+        setparentstate(parentstate);
+        
+        console.log(parentstate);
     }
 return(
+     
 <div>
-<NameInput nam="name"  parentCallback={handleCallback} />
-<NameInput nam="family" setname2={(parentstate.name) }/>
-<NameInput nam="f-name" setname3={(parentstate.name) }/>
-<BirthDay nam="birthDate" setValue1={parentstate.date} />
-<Nationalcode2  nam="nationalCode" setcodM1={(parentstate.codm) }/>
-<Sheba nam="sheba" setsheba1={(parentstate.shebacode) } />
-<Submit  sendInfo={parentstate} />
+
+    <form >
+        <NameInput nam="name"  parentCallback={handleCallback} />
+        <NameInput nam="family" parentCallback={handleCallbackFamily}/>
+        <NameInput nam="f-name" parentCallback={handleCallbackFname}/>
+        <BirthDay nam="birthDate" setValue1={parentstate.date} />
+        <Nationalcode2  nam="nationalCode" setcodM1={(parentstate.codm) }/>
+        <Sheba nam="sheba" setsheba1={(parentstate.shebacode) } />
+        {/* <Submit  sendInfo={parentstate} /> */}
+    </form>
+   <div ref={myContainer}></div>
+
 </div>
 )
 

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import  {VnationalCode}  from './validator';
  function Nationalcode2 (props){
     const [codM,setcodM]= useState("")
-   const setcodM1= props.setcodM()
    
 
     return(

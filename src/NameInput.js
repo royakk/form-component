@@ -13,10 +13,10 @@ export default function NameInput (props){
     return(
         <div className="name">
           <span>{props.nam}</span>
-          <input  type="text"   id={props.nam}  value={name} onChange={onTrigger} placeholder={props.nam} required  ></input> 
+          <input  type="text"   id={props.nam}  value={name} onChange={onTrigger} onKeyUp={onTrigger} placeholder={props.nam} required  ></input> 
           <label >
            {
-             name && !Vname(props.parentCallback) ? 'name incorrect' : ''
+             name && !Vname(name) ? 'name incorrect' : ''
            }
          </label> 
         </div>

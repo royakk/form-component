@@ -17,7 +17,7 @@ function Postform(props) {
 //    )
     return (
         <div className="btn">
-           <input type="submit" value="Submit" onClick={handleSubmit} /> 
+           <input type="submit" value="Submit"  /> 
         </div>
     );
 
