@@ -3,7 +3,7 @@
 import React from 'react';
 import axios from 'axios'
 function Postform(props) {
-    const url=""
+    const url='https://reqres.in/api/users?page=2'
     const value={...props.sendInfo}
     // const [value,setvalue]=useState({
         // name:props.setname1,
@@ -17,16 +17,17 @@ function Postform(props) {
 //    )
     return (
         <div className="btn">
-           <input type="submit" value="Submit"  /> 
+           <input type="submit" value="Submit"  onClick={()=>handleSubmit(value)} /> 
         </div>
     );
 
 }
-function handleSubmit (event){
-    event.preventDefault();
-    axios.post(url,value)
-    .then(res=>{console.log(res)})
- }
+const handleSubmit =async (value)=>{
+    
+   const res=await axios.post('https://reqres.in/api/users?page=2',value)
+    console.log(res)
+    console.log(value)
+}
 //  handleUpdat =(e)=>{
 //     const newvalue={...value}
 //     newvalue[e.target.value]=e.target.value;

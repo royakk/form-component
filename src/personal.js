@@ -1,8 +1,8 @@
 import BirthDay from './birthDay';
 import NameInput from './NameInput';
 import Nationalcode2 from './nationalcode2';
-import Sheba from './sheba';
-// import Submit from './api/submit';
+// import Sheba from './sheba';
+import Submit from './api/submit';
 import { createRef, useState } from 'react';
 import React, { useRef } from "react";
 
@@ -46,6 +46,27 @@ const[parentstate,setparentstate]=useState({
         
         console.log(parentstate);
     }
+
+ function handleCallbackBirth (inputBirth){
+    parentstate.date = inputBirth;
+    setparentstate(parentstate);
+    
+    console.log(parentstate);
+ }
+
+ function handleCallbackCodM (inputCodeM){
+    parentstate.codm = inputCodeM;
+    setparentstate(parentstate);
+    
+    console.log(parentstate);
+ }
+
+//  function handleCallbackSheba (inputSheba){
+//     parentstate.shebacode = inputSheba;
+//     setparentstate(parentstate);
+    
+//     console.log(parentstate);
+//  }
 return(
      
 <div>
@@ -54,10 +75,10 @@ return(
         <NameInput nam="name"  parentCallback={handleCallback} />
         <NameInput nam="family" parentCallback={handleCallbackFamily}/>
         <NameInput nam="f-name" parentCallback={handleCallbackFname}/>
-        <BirthDay nam="birthDate" setValue1={parentstate.date} />
-        <Nationalcode2  nam="nationalCode" setcodM1={(parentstate.codm) }/>
-        <Sheba nam="sheba" setsheba1={(parentstate.shebacode) } />
-        {/* <Submit  sendInfo={parentstate} /> */}
+        <BirthDay nam="birthDate" parentCallback={handleCallbackBirth} />
+        <Nationalcode2  nam="nationalCode" parentCallback={handleCallbackCodM }/>
+        {/* <Sheba nam="sheba" parentCallback={handleCallbackSheba } /> */}
+        <Submit  sendInfo={parentstate} />
     </form>
    <div ref={myContainer}></div>
 

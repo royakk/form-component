@@ -3,10 +3,18 @@ import {Vsheba} from './validator';
 
 function Sheba(props) {
     const[input,setsheba]= useState("")
+
+    const onTrigger= (event)=> {
+      setsheba (event.target.value);
+        props.parentCallback(input
+          );
+     }
+    
+
     return (
         <div className="sheba">
             <span>{props.nam}</span>
-           <input type="text" value={input} onChange={e =>setsheba(e.target.value) } required  ></input> 
+           <input type="text" value={input} onChange={onTrigger } required  ></input> 
           <label >
            {
              input && !Vsheba(input) ? 'sheba incorrect' : ''

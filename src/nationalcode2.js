@@ -3,13 +3,17 @@ import  {VnationalCode}  from './validator';
  function Nationalcode2 (props){
     const [codM,setcodM]= useState("")
    
-
+    const onTrigger= (event)=> {
+      setcodM (event.target.value);
+        props.parentCallback(codM);
+     }
+    
     return(
        
         <div className="nationalcode" >
         <span>{props.nam}</span>
         
-         <input id='input' type="text" value={codM} onChange={e =>setcodM(e.target.value)} placeholder="___-______-_" />
+         <input id='input' type="text" value={codM} onChange={onTrigger} placeholder="___-______-_" />
 
          <label >
            {
