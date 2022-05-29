@@ -7,7 +7,7 @@ export default function NameInput (props){
   const onTrigger= (event)=> {
   setname (event.target.value);
     props.parentCallback(name);
-}
+  }
 
    
     return(

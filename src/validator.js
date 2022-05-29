@@ -1,8 +1,18 @@
  import $ from 'jquery';
  
+ export  function Vname(name){
+    var p = /^[\u0600-\u06FF\s]+$/;
+    if(!p.test(name)){
+        return false;
+    }
+    return true;
+}
+
  export function VnationalCode(codM)
 {
+    // let codMn= Number(codM)
     if (isNaN(codM) || codM.length === 10) {
+        
         if (codM === '1111111111' ||
             codM === '0000000000' ||
             codM === '2222222222' ||
@@ -13,7 +23,7 @@
             codM === '7777777777' ||
             codM === '8888888888' ||
             codM === '9999999999') {
-
+                console.log("codM111")
             return false;
         }
       let  c = parseInt(codM.charAt(9));
@@ -28,8 +38,10 @@
             parseInt(codM.charAt(8)) * 2;
        let r = n - parseInt(n / 11) * 11;
         if ((r === 0 && r === c) || (r === 1 && c === 1) || (r > 1 && c === 11 - r)) {
+            console.log("codM222")
             return true;
         } else {
+            console.log("codM333")
             return false;
         }
     } else {
@@ -63,13 +75,7 @@ export  function Vsheba(input){
     }
 
 
-export  function Vname(name){
-    var p = /^[\u0600-\u06FF\s]+$/;
-    if(!p.test(name)){
-        return false;
-    }
-    return true;
-}
+
 
 export  function Vbirth(birth){
     const birthReg=  /^(0[1-9]|1[012])[-/.](0[1-9]|[12][0-9]|3[01])[-/.](19|20)\\d\\d$/;

@@ -13,7 +13,7 @@ import  {VnationalCode}  from './validator';
         <div className="nationalcode" >
         <span>{props.nam}</span>
         
-         <input id='input' type="text" value={codM} onChange={onTrigger} placeholder="___-______-_" />
+         <input id='input' type="text" value={codM} onChange={onTrigger} onKeyUp={onTrigger} placeholder="___-______-_" />
 
          <label >
            {

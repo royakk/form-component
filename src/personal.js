@@ -1,14 +1,19 @@
 import BirthDay from './birthDay';
 import NameInput from './NameInput';
 import Nationalcode2 from './nationalcode2';
-// import Sheba from './sheba';
+import Sheba from './sheba';
 import Submit from './api/submit';
 import { createRef, useState } from 'react';
-import React, { useRef } from "react";
+import axios from 'axios';
+import Vlidator, {Vbirth, Vname, Vsheba, VnationalCode } from './validator'
 
 // const infocontex = React.createContext();
 
+// const client=  axios.create({baseUrL:'https://reqres.in/api/users'});
+
 function Personal (props){
+
+
 const[parentstate,setparentstate]=useState({
     // شاید بشه به تعداد همه کامپوننت ها استیت ساخت
         //  name:props.setname,
@@ -30,36 +35,58 @@ const[parentstate,setparentstate]=useState({
         parentstate.name = inputname;
         setparentstate(parentstate);
         myContainer.current.innerHTML = inputname;
-        console.log(myContainer);
-        
+
         console.log(parentstate);
     }
     function handleCallbackFamily (inputfamily){
         parentstate.family = inputfamily;
         setparentstate(parentstate);
-        
         console.log(parentstate);
     }
     function handleCallbackFname (inputfname){
         parentstate.fname = inputfname;
         setparentstate(parentstate);
-        
         console.log(parentstate);
     }
 
  function handleCallbackBirth (inputBirth){
     parentstate.date = inputBirth;
     setparentstate(parentstate);
-    
     console.log(parentstate);
  }
 
  function handleCallbackCodM (inputCodeM){
     parentstate.codm = inputCodeM;
     setparentstate(parentstate);
-    
     console.log(parentstate);
  }
+
+ function handleCallbackSheba (inputSheba){
+    parentstate.shebacode = inputSheba;
+    setparentstate(parentstate);
+    console.log(parentstate);
+ }
+ const createPostAPI = async ()=>{
+    
+        const response= await axios.post ('https://reqres.in/api/users',parentstate)
+        console.log(response)
+}
+
+ function handleSubmit (e){
+    e.preventDefault();
+    Vname(parentstate.name) && Vname(parentstate.family) && Vname(parentstate.fname)  && Vsheba(parentstate.shebacode) 
+    && VnationalCode(parentstate.codm) ?   createPostAPI()   : alert("اطفا مشخصات خود را صحیح وارد نمایید")
+       console.log(Vname(parentstate.name))
+       console.log(Vname(parentstate.name))
+       console.log(Vname(parentstate.name))
+       console.log (Vbirth(parentstate.date))
+       console.log(VnationalCode(parentstate.codm))
+       console.log(parentstate.codm)
+       console.log(Vsheba(parentstate.shebacode))
+       console.log(parentstate.shebacode)
+  }
+
+  
 
 //  function handleCallbackSheba (inputSheba){
 //     parentstate.shebacode = inputSheba;
@@ -71,14 +98,14 @@ return(
      
 <div>
 
-    <form >
+    <form onSubmit={handleSubmit}>
         <NameInput nam="name"  parentCallback={handleCallback} />
         <NameInput nam="family" parentCallback={handleCallbackFamily}/>
         <NameInput nam="f-name" parentCallback={handleCallbackFname}/>
         <BirthDay nam="birthDate" parentCallback={handleCallbackBirth} />
         <Nationalcode2  nam="nationalCode" parentCallback={handleCallbackCodM }/>
-        {/* <Sheba nam="sheba" parentCallback={handleCallbackSheba } /> */}
-        <Submit  sendInfo={parentstate} />
+        <Sheba nam="sheba" parentCallback={handleCallbackSheba } />
+        <Submit  sendInfo={parentstate.name} />
     </form>
    <div ref={myContainer}></div>
 
