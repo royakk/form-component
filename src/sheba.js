@@ -14,7 +14,7 @@ function Sheba(props) {
     return (
         <div className="sheba">
             <span>{props.nam}</span>
-           <input type="text" value={input} onChange={onTrigger } onKeyUp={onTrigger} required  placeholder="IR-" ></input> 
+           <input type="text" value={input} onChange={onTrigger } onKeyUp={onTrigger} onPaste={onTrigger} required  placeholder="IR-" ></input> 
           <label >
            {
              input && !Vsheba(input) ? 'sheba incorrect' : ''
