@@ -31,7 +31,7 @@ export default function BirthDay(props) {
           inputFormat={"yyyy/MM/dd"}
           onChange={currdate => {setCurrDate(currdate);handleChange(currdate)}}
           renderInput={(params) => <TextField {...params} />}
-
+          maxDate={new Date()}
         />
       </LocalizationProvider>
     </div>
