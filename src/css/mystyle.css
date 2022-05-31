@@ -4,6 +4,7 @@ body {
     padding: 40px;
     font-family: Arial;
     /* text-align: center; */
+    align-items: center
 }
 
 label {
@@ -26,7 +27,8 @@ div {
     border: 1px solid;
     padding: 10px;
     background-color: antiquewhite;
-    width: 25%;
+    width: 20%;
+    margin: 0 auto
 }
 
 .date {
@@ -34,5 +36,9 @@ div {
 }
 
 .btn {
-    width: 1000px;
+    width: 200px;
+}
+
+.component {
+    margin: 0 auto
 }

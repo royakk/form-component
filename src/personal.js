@@ -6,6 +6,8 @@ import Submit from './api/submit';
 import { createRef, useState } from 'react';
 import axios from 'axios';
 import Vlidator, {Vbirth, Vname, Vsheba, VnationalCode } from './validator'
+import { ThemeProvider } from "@material-ui/core";
+import { theme } from "./theme"
 
 // const infocontex = React.createContext();
 
@@ -70,6 +72,7 @@ const[parentstate,setparentstate]=useState({
     
         const response= await axios.post ('https://reqres.in/api/users',parentstate)
         console.log(response)
+        alert("ثبت نام با موفقیت انجام شد")
 }
 
  function handleSubmit (e){
@@ -95,8 +98,8 @@ const[parentstate,setparentstate]=useState({
 //     console.log(parentstate);
 //  }
 return(
-     
-<div>
+   <ThemeProvider theme={theme}> 
+<div className='component'>
 
     <form onSubmit={handleSubmit}>
         <NameInput nam="name"  parentCallback={handleCallback} />
@@ -110,6 +113,7 @@ return(
    <div ref={myContainer}></div>
 
 </div>
+</ThemeProvider>
 )
 
 }

@@ -1,41 +1,33 @@
 
-// import { useState,} from "react";
-import React, { useState } from 'react';
 
-
-
+import PanToolIcon from '@mui/icons-material/PanTool';
+import * as React from 'react';
+import Button from '@mui/material/Button';
 
 function Postform(props) {
 
     console.log("======================");
 
-    console.log(props);
-    console.log(props.sendInfo);
+    // console.log(props);
+    // console.log(props.sendInfo);
     
     // const value=props.sendInfo
-    const [childstate,setchildstate]= useState(props.sendInfo)
-    // const [value,setvalue]=useState({
-        // name:props.setname1,
-        // family:props.setname2,
-        // fname:props.setname3,
-        // date:props.setValue1,
-        // codm:props.setcodM1,
-        // shebacode:props.setsheba1
-        console.log(childstate);
+    // const [childstate,setchildstate]= useState(props.sendInfo)
+   
+        // console.log(childstate);
         console.log("====================");
 //     }   
 //    )
 
-// const handleSubmit = new Promise ((childstate) => {
-//     // e.preventDefault();
-    
-//     let response = client.post('', childstate );
-//     console.log(response);
-  
-//   });
     return (
         <div className="btn">
-           <input type="submit" value="Submit"   /> 
+            <Button
+            type='submit'
+            // onClick={() => { console.log('onClick'); }}
+             variant="contained">ثبت نام</Button> 
+           <PanToolIcon />
+           
+           
         </div>
     );
 
