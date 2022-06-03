@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import BirthDay from './birthDay';
 import NameInput from './NameInput';
 import Nationalcode2 from './nationalcode2';
@@ -8,6 +9,8 @@ import axios from 'axios';
 import Vlidator, {Vbirth, Vname, Vsheba, VnationalCode } from './validator'
 import { ThemeProvider } from "@material-ui/core";
 import { theme } from "./theme"
+import styles from './css/mystyle.css';
+
 
 // const infocontex = React.createContext();
 
@@ -15,7 +18,7 @@ import { theme } from "./theme"
 
 function Personal (props){
 
-
+const Navigate= useNavigate();
 const[parentstate,setparentstate]=useState({
     // شاید بشه به تعداد همه کامپوننت ها استیت ساخت
         //  name:props.setname,
@@ -70,15 +73,16 @@ const[parentstate,setparentstate]=useState({
  }
  const createPostAPI = async ()=>{
     
-        const response= await axios.post ('https://reqres.in/api/users',parentstate)
-        console.log(response)
-        alert("ثبت نام با موفقیت انجام شد")
+         await axios.post ('https://reqres.in/api/users',parentstate)
+        // console.log(response)
+        // Navigate("/success")
+        .then(res =>  Navigate("/success"))
 }
 
  function handleSubmit (e){
     e.preventDefault();
     Vname(parentstate.name) && Vname(parentstate.family) && Vname(parentstate.fname)  && Vsheba(parentstate.shebacode) 
-    && VnationalCode(parentstate.codm) ?   createPostAPI()   : alert("اطفا مشخصات خود را صحیح وارد نمایید")
+    && VnationalCode(parentstate.codm) ?   createPostAPI()   : Navigate("/notfound")
        console.log(Vname(parentstate.name))
        console.log(Vname(parentstate.name))
        console.log(Vname(parentstate.name))
