@@ -76,13 +76,14 @@ const[parentstate,setparentstate]=useState({
          await axios.post ('https://reqres.in/api/users',parentstate)
         // console.log(response)
         // Navigate("/success")
-        .then(res =>  Navigate("/success"))
+        // .then(res =>  Navigate("/success"))
+        .then(res =>handleResponse(res))
 }
 
  function handleSubmit (e){
     e.preventDefault();
     Vname(parentstate.name) && Vname(parentstate.family) && Vname(parentstate.fname)  && Vsheba(parentstate.shebacode) 
-    && VnationalCode(parentstate.codm) ?   createPostAPI()   : Navigate("/notfound")
+    && VnationalCode(parentstate.codm) ?   createPostAPI()   : alert("لطفا مشخصات خود را صحیح وارد نمایید")
        console.log(Vname(parentstate.name))
        console.log(Vname(parentstate.name))
        console.log(Vname(parentstate.name))
@@ -93,7 +94,17 @@ const[parentstate,setparentstate]=useState({
        console.log(parentstate.shebacode)
   }
 
-  
+  const handleResponse=(res)=> {
+
+    console.log("=======================")
+        if (res.status == 201) {
+            Navigate("/success")
+		} else {
+			Navigate("/notfound")
+		}
+    };
+   
+
 
 //  function handleCallbackSheba (inputSheba){
 //     parentstate.shebacode = inputSheba;
